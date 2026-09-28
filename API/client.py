@@ -1,5 +1,11 @@
 import requests
 import streamlit as st
+import os
+from dotenv import load_dotenv()
+load_dotenv()
+os.environ['LANCHAIN_API_KEY']=os.getenv("LANGCHAIN_API_KEY")
+os.environ['LANCHAIN_TRACING_V2']="true"
+
 
 def get_openai_response(input_text):
     response=requests.post("http://localhost:8000/essay/invoke",
